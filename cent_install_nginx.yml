@@ -8,11 +8,11 @@
       - name: install nginx
         command: yum install -y nginx
       - name: start nginx
-        command: sudo systemctl start nginx
+        command: systemctl start nginx
       - name: open appropriate ports in firewall
-        command: firewall-cmd --permanent --zone=public --add-service=http, 
-                firewall-cmd --permanent --zone=public --add-service=https,
-                firewall-cmd --reload
+        command: firewall-cmd --permanent --zone=public --add-service=http
+        command: firewall-cmd --permanent --zone=public --add-service=https
+        command: firewall-cmd --reload
       - name: enable to start on server launch
         command: systemctl enable nginx
 
