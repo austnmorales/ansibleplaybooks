@@ -1,0 +1,7 @@
+---
+  - name: reboot servers 
+    hosts: linux
+    become: yes 
+    tasks:
+      - name: reboot server 
+        command: reboot
