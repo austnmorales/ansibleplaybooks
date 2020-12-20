@@ -1,0 +1,18 @@
+---
+  - name: install the nginx webserver on our computers
+    hosts: linux
+    become: yes
+    tasks:
+      - name: add repo if not there already 
+        command: yum install epel-release
+      - name: install nginx
+        command: yum install nginx
+      - name: start nginx
+        command: sudo systemctl start nginx
+      - name: open appropriate ports in firewall
+        command: firewall-cmd --permanent --zone=public --add-service=http, 
+                firewall-cmd --permanent --zone=public --add-service=https,
+                firewall-cmd --reload
+      - name: enable to start on server launch
+        command: systemctl enable nginx
+
