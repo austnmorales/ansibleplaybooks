@@ -1,0 +1,16 @@
+---
+  - name: installing kubernetes!
+    hosts: linux 
+    become: yes 
+    tasks:
+      - name: copying kube repo to machines from master
+        copy: 
+          src: /etc/yum.repos.d/kubernetes.repo
+          dest: /etc/yum.repos.d/
+      - name: install packages
+        command: sudo yum install -y kubelet kubeadm kubectl
+      - name: systemctl enable
+        command: systemctl enable kubelet
+        command: systemctl start kubelet 
+          
+      

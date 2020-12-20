@@ -1,0 +1,8 @@
+---
+  - name: install_nano
+    hosts: centos
+    tasks:
+      -name : ensure nano is there
+       yum:
+          name: nano
+          state: latest

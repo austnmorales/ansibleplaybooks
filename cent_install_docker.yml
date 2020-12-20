@@ -1,0 +1,25 @@
+---
+  - name: install_docker
+    hosts: linux
+    become: yes
+    tasks:
+      - name: add yum utils
+        yum:
+          name: yum-utils
+      - name: add repo 
+        command: yum-config-manager \ --add-repo \ https://download.docker.com/linux/centos/docker-ce.repo
+      - name: remove old versions
+        yum:
+          name: docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+          state: absent
+      - name: install the latest versions 
+        yum:
+          name: docker-ce docker-ce-cli containerd.io
+          state: latest
