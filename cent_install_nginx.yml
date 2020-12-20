@@ -9,6 +9,8 @@
         command: yum install -y nginx
       - name: start nginx
         command: systemctl start nginx
+      - name: install firewalld
+        command: yum install firewalld
       - name: open appropriate ports in firewall
         command: firewall-cmd --permanent --zone=public --add-service=http
         command: firewall-cmd --permanent --zone=public --add-service=https
