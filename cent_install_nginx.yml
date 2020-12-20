@@ -6,7 +6,7 @@
       - name: add repo if not there already 
         command: yum install -y epel-release
       - name: install nginx
-        command: yum install nginx
+        command: yum install -y nginx
       - name: start nginx
         command: sudo systemctl start nginx
       - name: open appropriate ports in firewall
