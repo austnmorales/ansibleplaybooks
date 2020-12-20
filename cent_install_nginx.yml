@@ -4,11 +4,9 @@
     become: yes
     tasks:
       - name: add repo if not there already 
-        command: yum install epel-release
-        state: present
+        command: yum install -y epel-release
       - name: install nginx
         command: yum install nginx
-        state: present
       - name: start nginx
         command: sudo systemctl start nginx
       - name: open appropriate ports in firewall
